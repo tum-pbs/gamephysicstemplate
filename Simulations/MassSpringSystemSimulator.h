@@ -25,6 +25,7 @@ public:
 	void simulateTimestep(float timeStep);
 	void onClick(int x, int y);
 	void onMouse(int x, int y);
+	void init();
 
 	// Specific Functions
 	void setMass(float mass);
@@ -74,6 +75,7 @@ private:
 	int m_iIntegrator;
 	void calculateEuler(float timestep);
 	void calculateMidPoint(float timestep);
+	int counter = 0;
 
 	// UI Attributes
 	Vec3 m_externalForce;
