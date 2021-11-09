@@ -1,9 +1,6 @@
-﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
-  
-  compilation object save succeeded; see D:\physics\gamephysicstemplate\Win32\Debug\effect.fxo
-  TemplateSimulator.cpp
+﻿  MassSpringSystemSimulator.cpp
 D:\physics\gamephysicstemplate\Simulations\util\vectorbase.h(11,1): warning C4005: "NOMINMAX": Makro-Neudefinition
-D:\physics\gamephysicstemplate\Simulations\TemplateSimulator.cpp : message : Siehe vorherige Definition von "NOMINMAX"
+D:\physics\gamephysicstemplate\Simulations\MassSpringSystemSimulator.cpp : message : Siehe vorherige Definition von "NOMINMAX"
 D:\physics\gamephysicstemplate\Simulations\util\vectorbase.h(204,36): warning C4244: "Argument": Konvertierung von "const Scalar" in "float", möglicher Datenverlust
           with
           [
@@ -105,7 +102,4 @@ D:\physics\gamephysicstemplate\Simulations\util\matrixbase.h(774,43): warning C4
           [
               Scalar=double
           ]
-  FFmpeg.cpp
-  util.cpp
-  Code wird generiert...
   Demo_2017.vcxproj -> D:\physics\gamephysicstemplate\Win32\Debug\Simulations.lib

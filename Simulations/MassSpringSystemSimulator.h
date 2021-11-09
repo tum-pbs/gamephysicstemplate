@@ -1,7 +1,6 @@
 #ifndef MASSSPRINGSYSTEMSIMULATOR_h
 #define MASSSPRINGSYSTEMSIMULATOR_h
 #include <d3d11.h>
-
 #include "Simulator.h"
 
 // Do Not Change
@@ -44,12 +43,37 @@ public:
 		m_iIntegrator = integrator;
 	}
 
+	struct Point
+	{
+	public:
+		Point(Vec3 pos, Vec3 velo, bool isFixed) : position{ pos }, velocity{ velo }, force{ Vec3() }, isFixed{ isFixed } {};
+		Vec3 position;
+		Vec3 velocity;
+		Vec3 force;
+		bool isFixed;
+	};
+
+	std::vector<Point> points;
+
+	struct Spring
+	{
+	public:
+		Spring(int p1, int p2, float inilength) : point1{ p1 }, point2{ p2 }, initialLength{ inilength } {};
+		int point1;
+		int point2;
+		float initialLength;
+		float currentLength;
+	};
+	std::vector<Spring> springs;
+
 private:
 	// Data Attributes
 	float m_fMass;
 	float m_fStiffness;
 	float m_fDamping;
 	int m_iIntegrator;
+	void calculateEuler(float timestep);
+	void calculateMidPoint(float timestep);
 
 	// UI Attributes
 	Vec3 m_externalForce;
