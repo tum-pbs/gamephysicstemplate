@@ -13,7 +13,7 @@
 class MassSpringSystemSimulator:public Simulator{
 public:
 	// Construtors
-	MassSpringSystemSimulator();
+	MassSpringSystemSimulator(Vec3 gravity = Vec3());
 	
 	// UI Functions
 	const char * getTestCasesStr();
@@ -25,7 +25,8 @@ public:
 	void simulateTimestep(float timeStep);
 	void onClick(int x, int y);
 	void onMouse(int x, int y);
-	void init();
+	void init_Demo2and3();
+	void init_Demo4();
 
 	// Specific Functions
 	void setMass(float mass);
@@ -73,6 +74,7 @@ private:
 	float m_fStiffness;
 	float m_fDamping;
 	int m_iIntegrator;
+	const Vec3 GRAVITY;
 	void calculateEuler(float timestep);
 	void calculateMidPoint(float timestep);
 	int counter = 0;
