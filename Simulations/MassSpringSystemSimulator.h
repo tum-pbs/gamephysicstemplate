@@ -29,8 +29,8 @@ public:
 	void setMass(float mass);
 	void setStiffness(float stiffness);
 	void setDampingFactor(float damping);
-	int addMassPoint(Vec3 position, Vec3 Velocity, bool isFixed);
-	void addSpring(int masspoint1, int masspoint2, float initialLength);
+	int addMassPoint(Vec3 position, Vec3 Velocity, Vec3 force, bool isFixed, int index);
+	void addSpring(int masspoint1, int masspoint2, float stiffness, float initialLength, int index);
 	int getNumberOfMassPoints();
 	int getNumberOfSprings();
 	Vec3 getPositionOfMassPoint(int index);
@@ -48,7 +48,9 @@ private:
 	float m_fMass;
 	float m_fStiffness;
 	float m_fDamping;
+	float m_fTimeStep;
 	int m_iIntegrator;
+	bool caseSwitched;
 
 	// UI Attributes
 	Vec3 m_externalForce;
