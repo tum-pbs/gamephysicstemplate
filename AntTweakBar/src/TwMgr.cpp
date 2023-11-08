@@ -5748,8 +5748,13 @@ int ANT_CALL TwKeyTest(int _Key, int _Modifiers)
 }
 
 //  ---------------------------------------------------------------------------
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201402L) || __cplusplus >= 201402L)
+#include <functional>
 
+struct StructCompare : public function<bool(TwType, TwType)>
+#else
 struct StructCompare : public binary_function<TwType, TwType, bool>
+#endif
 {
     bool operator()(const TwType& _Left, const TwType& _Right) const
     {

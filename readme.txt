@@ -1,11 +1,17 @@
 -------------------------------------------------------------------------------
---- Visual Studio 2013/15/17 Template Project for C++/DirectX11 Application ---
+--- Visual Studio 2013/15/17/22 Template Project for C++/DirectX11 Application
 --- Marc Treib, Florian Ferstl, Sept 2013 -------------------------------------
 --- Updated: Florian Ferstl, Sept 2014 ----------------------------------------
 --- Updated: Mina Saad Aziz, May 2016 -----------------------------------------
 --- Updated: Mengyu Chu, Nov 2017    ------------------------------------------
 --- Updated: You Xie, Nov 2019    ---------------------------------------------
+--- Updated: Rene Winchenbach, Felix Koehler, Oct 2023    ---------------------
 -------------------------------------------------------------------------------
+
+!Important:
+
+We recommend using the `Template_2022.sln` solution file together with Visual
+Studio 2022 Community Edition.
 
 This solution contains the following components:
 
