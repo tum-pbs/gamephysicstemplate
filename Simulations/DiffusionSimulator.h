@@ -4,15 +4,8 @@
 #include "Simulator.h"
 #include "vectorbase.h"
 
-//impement your own grid class for saving grid data
 class Grid {
-public:
-	// Construtors
-	Grid();
-
-
-private:
-	// Attributes
+	// to be implemented
 };
 
 
@@ -34,7 +27,9 @@ public:
 	void onMouse(int x, int y);
 	// Specific Functions
 	void drawObjects();
-	Grid* diffuseTemperatureExplicit();
+
+	// Feel free to change the signature of these functions, add arguments, etc.
+	void diffuseTemperatureExplicit();
 	void diffuseTemperatureImplicit();
 
 private:
@@ -45,7 +40,7 @@ private:
 	Point2D m_mouse;
 	Point2D m_trackmouse;
 	Point2D m_oldtrackmouse;
-	Grid *T; //save results of every time step
+	Grid T;
 };
 
 #endif

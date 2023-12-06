@@ -2,9 +2,6 @@
 #include "pcgsolver.h"
 using namespace std;
 
-Grid::Grid() {
-}
-
 
 DiffusionSimulator::DiffusionSimulator()
 {
@@ -12,7 +9,7 @@ DiffusionSimulator::DiffusionSimulator()
 	m_vfMovableObjectPos = Vec3();
 	m_vfMovableObjectFinalPos = Vec3();
 	m_vfRotate = Vec3();
-	// to be implemented
+	// rest to be implemented
 }
 
 const char * DiffusionSimulator::getTestCasesStr(){
@@ -38,7 +35,7 @@ void DiffusionSimulator::notifyCaseChanged(int testCase)
 	m_vfMovableObjectPos = Vec3(0, 0, 0);
 	m_vfRotate = Vec3(0, 0, 0);
 	//
-	//to be implemented
+	// to be implemented
 	//
 	switch (m_iTestCase)
 	{
@@ -54,48 +51,24 @@ void DiffusionSimulator::notifyCaseChanged(int testCase)
 	}
 }
 
-Grid* DiffusionSimulator::diffuseTemperatureExplicit() {//add your own parameters
-	Grid* newT = new Grid();
-	// to be implemented
-	//make sure that the temperature in boundary cells stays zero
-	return newT;
-}
-
-void setupB(std::vector<Real>& b) {//add your own parameters
-	// to be implemented
-	//set vector B[sizeX*sizeY]
-	for (int i = 0; i < 25; i++) {
-		b.at(i) = 0;
-	}
-}
-
-void fillT() {//add your own parameters
-	// to be implemented
-	//fill T with solved vector x
-	//make sure that the temperature in boundary cells stays zero
-}
-
-void setupA(SparseMatrix<Real>& A, double factor) {//add your own parameters
-	// to be implemented
-	//setup Matrix A[sizeX*sizeY*sizeZ, sizeX*sizeY*sizeZ]
-	// set with:  A.set_element( index1, index2 , value );
-	// if needed, read with: A(index1, index2);
-	// avoid zero rows in A -> set the diagonal value for boundary cells to 1.0
-	for (int i = 0; i < 25; i++) {
-			A.set_element(i, i, 1); // set diagonal
-	}
+void DiffusionSimulator::diffuseTemperatureExplicit() {
+// to be implemented
 }
 
 
-void DiffusionSimulator::diffuseTemperatureImplicit() {//add your own parameters
+void DiffusionSimulator::diffuseTemperatureImplicit() {
 	// solve A T = b
-	// to be implemented
-	const int N = 25;//N = sizeX*sizeY*sizeZ
-	SparseMatrix<Real> *A = new SparseMatrix<Real> (N);
-	std::vector<Real> *b = new std::vector<Real>(N);
 
-	setupA(*A, 0.1);
-	setupB(*b);
+	// This is just an example to show how to work with the PCG solver,
+	const int nx = 5;
+	const int ny = 5;
+	const int nz = 5;
+	const int N = nx * ny * nz;
+
+	SparseMatrix<Real> A(N);
+	std::vector<Real> b(N);
+
+	// This is the part where you have to assemble the system matrix A and the right-hand side b!
 
 	// perform solve
 	Real pcg_target_residual = 1e-05;
@@ -110,23 +83,25 @@ void DiffusionSimulator::diffuseTemperatureImplicit() {//add your own parameters
 	for (int j = 0; j < N; ++j) { x[j] = 0.; }
 
 	// preconditioners: 0 off, 1 diagonal, 2 incomplete cholesky
-	solver.solve(*A, *b, x, ret_pcg_residual, ret_pcg_iterations, 0);
-	// x contains the new temperature values
-	fillT();//copy x to T
+	solver.solve(A, b, x, ret_pcg_residual, ret_pcg_iterations, 0);
+
+	// Final step is to extract the grid temperatures from the solution vector x
+	// to be implemented
 }
 
 
 
 void DiffusionSimulator::simulateTimestep(float timeStep)
 {
-	// to be implemented
 	// update current setup for each frame
 	switch (m_iTestCase)
 	{
 	case 0:
-		T = diffuseTemperatureExplicit();
+		// feel free to change the signature of this function
+		diffuseTemperatureExplicit();
 		break;
 	case 1:
+		// feel free to change the signature of this function
 		diffuseTemperatureImplicit();
 		break;
 	}
